@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 MAINTAINER z4yx <z4yx@users.noreply.github.com>
 
@@ -53,6 +53,7 @@ RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   kmod \
   git \
   rsync \
+  mc \
   bc \
   u-boot-tools \
   python \
@@ -84,7 +85,7 @@ RUN chmod a+rx /${PETA_RUN_FILE} && \
   mkdir -p /opt/Xilinx && \
   chmod 777 /tmp /opt/Xilinx && \
   cd /tmp && \
-  sudo -u vivado -i /accept-eula.sh /${PETA_RUN_FILE} /opt/Xilinx/petalinux && \
+  sudo -u vivado -i /${PETA_RUN_FILE} --skip_license --dir /opt/Xilinx/petalinux && \
   rm -f /${PETA_RUN_FILE} /accept-eula.sh
 
 # make /bin/sh symlink to bash instead of dash:
