@@ -1,0 +1,2 @@
+podman build --build-arg PETA_VERSION=2023.2 --build-arg PETA_RUN_FILE=petalinux-v2023.2-10121855-installer.run -t petalinux:2023.2 .
+

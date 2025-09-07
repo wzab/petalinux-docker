@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 MAINTAINER z4yx <z4yx@users.noreply.github.com>
 
@@ -28,7 +28,7 @@ RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   wget \
   socat \
   gcc-multilib \
-  libidn11 \
+  libidn12 \
   libsdl1.2-dev \
   libglib2.0-dev \
   lib32z1-dev \
@@ -53,9 +53,10 @@ RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
   kmod \
   git \
   rsync \
+  mc \
   bc \
   u-boot-tools \
-  python \
+  python3 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -84,7 +85,7 @@ RUN chmod a+rx /${PETA_RUN_FILE} && \
   mkdir -p /opt/Xilinx && \
   chmod 777 /tmp /opt/Xilinx && \
   cd /tmp && \
-  sudo -u vivado -i /accept-eula.sh /${PETA_RUN_FILE} /opt/Xilinx/petalinux && \
+  sudo -u vivado -i /${PETA_RUN_FILE} --skip_license --dir /opt/Xilinx/petalinux && \
   rm -f /${PETA_RUN_FILE} /accept-eula.sh
 
 # make /bin/sh symlink to bash instead of dash:
