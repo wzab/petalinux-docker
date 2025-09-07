@@ -1,0 +1,10 @@
+254c254,255
+< for file in ${tmpinstallerdir}/${plnx_tools_license_filename} ${tmpinstallerdir}/${third_party_license_filename}; do
+---
+> if false ; then
+> #for file in ${tmpinstallerdir}/${plnx_tools_license_filename} ${tmpinstallerdir}/${third_party_license_filename}; do
+276c277,278
+< done
+---
+> #done
+> fi
